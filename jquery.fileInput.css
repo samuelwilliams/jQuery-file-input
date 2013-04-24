@@ -1,0 +1,12 @@
+.jquery-file-input-wrapper {
+    position: relative;
+}
+
+.jquery-file-input-wrapper input[type=file] {
+    position: absolute;
+    z-index: 2;
+
+    *zoom: 1;
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
