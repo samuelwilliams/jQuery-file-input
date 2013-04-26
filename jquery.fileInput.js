@@ -10,15 +10,24 @@
             buttonText: 'browse'                            //The text for the browse button
         }, options);
 
-        var wrapper = '<div class="'+ settings.wrapperClass +'" />';
-        var button = '<span class="'+ settings.buttonClass +'">'+settings.buttonText+'</span>';
-        var input = '<input type="text" class="'+ settings.inputClass +'" value="'+ settings.inputPlaceholder +'" />';
+        var $wrapper = $('<div />').addClass(settings.wrapperClass);
+        var $button = $('<span />').addClass(settings.buttonClass).html(settings.buttonText);
+        var $input = $('<input />').attr({
+            type: 'text',
+            value: settings.inputPlaceholder,
+            class: settings.inputClass,
+            disabled: 'disabled'
+        });
 
         if (settings.buttonFirst) {
-            $(this).wrap(wrapper).after(input).after(button);
+            $(this).wrap($wrapper).after($input).after($button);
         } else {
-            $(this).wrap(wrapper).after(button).after(input);
+            $(this).wrap($wrapper).after($button).after($input);
         }
+
+        $(this).change(function () {
+            $input.val($(this).val());
+        });
 
         return this;
     };
